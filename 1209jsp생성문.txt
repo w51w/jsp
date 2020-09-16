@@ -1,0 +1,55 @@
+CREATE TABLE `bookingtbl` (
+  `no` int(11) NOT NULL AUTO_INCREMENT,
+  `time` varchar(10) NOT NULL,
+  `id` varchar(8) NOT NULL,
+  `movie_name` varchar(30) NOT NULL,
+  `seat` char(15) NOT NULL,
+  `date` date NOT NULL,
+  PRIMARY KEY (`no`),
+  KEY `id_idx` (`id`),
+  KEY `movie_name_idx` (`movie_name`),
+  CONSTRAINT `id` FOREIGN KEY (`id`) REFERENCES `membertbl` (`id`),
+  CONSTRAINT `movie_name` FOREIGN KEY (`movie_name`) REFERENCES `movietbl` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `membertbl` (
+  `id` varchar(8) NOT NULL,
+  `pw` varchar(15) NOT NULL,
+  `name` varchar(10) NOT NULL,
+  `city` varchar(25) NOT NULL,
+  `address` varchar(25) NOT NULL,
+  `birth` date NOT NULL,
+  `sex` char(10) NOT NULL,
+  `phone1` char(10) DEFAULT NULL,
+  `phone2` char(20) DEFAULT NULL,
+  `email` char(20) DEFAULT NULL,
+  `reg_date` datetime DEFAULT NULL,
+  `grade` int(11) DEFAULT '3',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `movietbl` (
+  `name` varchar(30) NOT NULL,
+  `poster` varchar(15) NOT NULL,
+  `genre` varchar(15) NOT NULL,
+  `openDate` date NOT NULL,
+  `plot` text,
+  `actor1` varchar(15) DEFAULT NULL,
+  `actor1_img` varchar(15) DEFAULT NULL,
+  `actor2` varchar(15) DEFAULT NULL,
+  `actor2_img` text,
+  `actor3` varchar(15) DEFAULT NULL,
+  `actor3_img` varchar(15) DEFAULT NULL,
+  `actor4` varchar(15) DEFAULT NULL,
+  `actor4_img` varchar(15) DEFAULT NULL,
+  PRIMARY KEY (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `ratetbl` (
+  `name` varchar(30) NOT NULL,
+  `id` varchar(8) NOT NULL,
+  `rate` smallint(6) NOT NULL,
+  `review` text,
+  `rate_date` datetime DEFAULT NULL,
+  PRIMARY KEY (`name`,`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+
